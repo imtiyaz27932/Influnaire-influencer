@@ -45,9 +45,4 @@ describe('Influencer Login', () => {
 
     })
 
-    it('verify that social button Google is visible on the login page', () => {
-        const nametest = new login()
-        nametest.fillpsdandleaveemialempty(repodata.Password)
-        nametest.hideunhide()
-    })
 })
