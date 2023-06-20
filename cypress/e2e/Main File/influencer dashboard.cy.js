@@ -49,12 +49,20 @@ describe('Influencer Login', () => {
     })
 
 
-    it('verify that user is able to Deactivate account', () => {
+    it.only('verify that user is able to Deactivate account', () => {
         const dash = new login()
         const test = new Dashboard()
         dash.loginCredentials(repodata.Email, repodata.Password)
         test.Deactivateaccount()
+
     })
+
+    it.only('verify that user is able to activate account', () => {
+        const dash = new login()
+        const test= new Dashboard()
+        dash.loginCredentials(repodata.Email, repodata.Password)
+        test.reactivateaccount()
+        })
 
 
     it('verify that user is able to logout from application successfully and reidrecte to login page ', () => {

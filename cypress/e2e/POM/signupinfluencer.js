@@ -18,9 +18,13 @@ class signup {
         otp5: () => cy.get('[aria-label="Please enter OTP character 5"]'),
         otp6: () => cy.get('[aria-label="Please enter OTP character 6"]'),
         verifyemailbtn: () => cy.get('.ant-btn'),
+        instagramconnect:()=> cy.xpath('//button'),
+        fbemail:()=> cy.get('#email'),
+        fbpsd:()=> cy.get('#pass'),
+
         nxtbtnclick: () => cy.get('.ant-btn-primary'),
-        textarea: () => cy.get('.ant-input'),
-        influencerhandle: () => cy.get('.ant-select-selection-search-input'),
+       // textarea: () => cy.get('.ant-input'),
+        //influencerhandle: () => cy.get('.ant-select-selection-search-input'),
         completeprofilebtn: () => cy.get('.ant-btn'),
         signupwithgooglebutton: () => cy.contains('Signup with google'),
         signupwithfbtn: () => cy.contains('Signup with facebook'),
@@ -77,16 +81,23 @@ class signup {
         this.elements.otp6().type('2')
         this.elements.verifyemailbtn().click()
         cy.wait(3000)
-        this.elements.nxtbtnclick().click()
-        this.elements.textarea().type('Hey! this is Leon Messi')
-        cy.wait(2000)
-        this.elements.influencerhandle().click()
-        //cy.pause()
+        this.elements.instagramconnect().first().click()
         cy.wait(5000)
-        cy.get('.ant-select-item-option-content').click()
+        cy.window('@windowOpen').then((newWindow) => {
+            cy.get('input[name="email"]').type('your-email@example.com');
+            cy.get('input[name="pass"]').type('your-password');
+          });
+          
+       // this.elements.nxtbtnclick().click()
+       // this.elements.textarea().type('Hey! this is Leon Messi')
+        cy.wait(2000)
+       // this.elements.influencerhandle().click()
+        //cy.pause()
+        // cy.wait(5000)
+        // cy.get('.ant-select-item-option-content').click()
         //cy.pause()
         //this.elements.influencerhandle().select('Demo').click()
-        this.elements.completeprofilebtn().click()
+        // this.elements.completeprofilebtn().click()
     }
 
     checkvisiblefields() {

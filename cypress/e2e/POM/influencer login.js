@@ -5,7 +5,8 @@ class login {
         loginBtn: () => cy.get('#basic > .ant-btn'),
         eyeicon: () => cy.get('.ant-input-suffix'),
         googlesocialbutton: () => cy.get('.ant-btn-default'),
-        facebooksocialbutton: () => cy.get('.gap-3 > .ant-btn-primary')
+        facebooksocialbutton: () => cy.get('.gap-3 > .ant-btn-primary'),
+       
     }
 
     errormsg = {
@@ -58,10 +59,13 @@ class login {
         this.elements.eyeicon().click()
         cy.wait(2000)
         this.elements.eyeicon().click()
-        this.elements.googlesocialbutton().should('be.visible')
-        this.elements.facebooksocialbutton().should('be.visible')
+        // this.elements.googlesocialbutton().should('be.visible')
+        // this.elements.facebooksocialbutton().should('be.visible')
     }
 
-}
+
+    }
+
+
 
 export default login

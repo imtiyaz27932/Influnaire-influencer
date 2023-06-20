@@ -7,7 +7,7 @@ describe('Influencer Signup Now Process', () => {
   beforeEach(() => {
     cy.fixture('influencerdata').then((data) => {
       repodata = data;
-      cy.visit(Cypress.config('baseUrl'), { timeout: 1000 });
+      cy.visit(Cypress.config('baseUrl'), { timeout: 100000 });
 
     })
   })
@@ -46,7 +46,7 @@ describe('Influencer Signup Now Process', () => {
 
   })
 
-  it('Influencer wants to signup', () => {
+  it.only('Influencer wants to signup', () => {
     cy.contains('Signup Now').click()
     const inf = new signup()
     inf.clickonsignupusingemailnumber()

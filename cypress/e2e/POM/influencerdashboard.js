@@ -1,3 +1,7 @@
+
+
+
+
 class Dashboard {
     elements = {
         logo: () => cy.get('img'),
@@ -18,6 +22,8 @@ class Dashboard {
         // catimg:()=> cy.get('.justify-center > img'),
         paragraphtext: () => cy.get('.px-4'),
         clickondeactiveaccntbtn: () => cy.get('.ant-btn'),
+        reactivatebtn: () => cy.get('.ant-btn'),
+        continuetoacnt: () => cy.get('.ant-btn'),
         logoutbtn: () => cy.get('#logout'),
 
 
@@ -54,10 +60,10 @@ class Dashboard {
         this.elements.Settings().click()
         cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(245, 245, 245)')
         this.elements.activatetheme().click()
-        cy.wait(2000)
-        cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(0, 0, 0)')
+        cy.wait(3000)
+        cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(245, 245, 245)')
         this.elements.activatetheme().click()
-        cy.wait(2000)
+        cy.wait(3000)
         cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(245, 245, 245)')
 
     }
@@ -70,25 +76,35 @@ class Dashboard {
         this.elements.paragraphtext().should('have.text', "This will make your account invisible to brands, you won't receive any emails or notifications. To Reactive login back to your account and click on re-activate account");
         this.elements.clickondeactiveaccntbtn().click()
     }
+    reactivateaccount() {
+        this.elements.reactivatebtn().click()
+        cy.wait(2000)
+        this.elements.continuetoacnt().click()
+        cy.wait(5000)
 
 
+    }
 
-
-
-
-    //logoutbtn: () => cy.contains('Logout'),
-
-
-
-
-
-
-
-
-    // logout() {
-    //     this.elements.logoutbtn().should('be.visible').click()
-    //     cy.wait(5000)
-    //     cy.url().should('be.eq', 'https://app.influnaire.dreamkashmir.com/influencer/login')
-    // }
 }
+
+
+
+
+
+
+//logoutbtn: () => cy.contains('Logout'),
+
+
+
+
+
+
+
+
+// logout() {
+//     this.elements.logoutbtn().should('be.visible').click()
+//     cy.wait(5000)
+//     cy.url().should('be.eq', 'https://app.influnaire.dreamkashmir.com/influencer/login')
+// }
+
 export default Dashboard

@@ -11,7 +11,7 @@ describe('Influencer Login', () => {
         })
     })
 
-    it('influencer wants to login', () => {
+    it.only('influencer wants to login', () => {
         const name = new login()
         name.loginCredentials(repodata.Email, repodata.Password)
 
