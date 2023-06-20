@@ -46,7 +46,7 @@ describe('Influencer Signup Now Process', () => {
 
   })
 
-  it.only('Influencer wants to signup', () => {
+  it('Influencer wants to signup', () => {
     cy.contains('Signup Now').click()
     const inf = new signup()
     inf.clickonsignupusingemailnumber()
@@ -58,7 +58,7 @@ describe('Influencer Signup Now Process', () => {
   })
 
 
-  it('verify that if the user did not enter OTP and verifies email', () => {
+  it.only('verify that if the user did not enter OTP and verifies email', () => {
     cy.contains('Signup Now').click()
     const inf = new signup()
     inf.clickonsignupusingemailnumber()
