@@ -15,8 +15,47 @@ describe('Influencer Login', () => {
         const name = new login()
         name.loginCredentials(repodata.Email, repodata.Password)
         name.verifystepsondashboard()
+        // name.validatesocialmediaaccounts()
+        cy.get('.flex .flex-col .ant-card-body')
+            .eq(0)
+            .within(() => {
+                cy.get('img')
+                    .should('have.attr', 'src', '/src/assets/images/connectInsta.png'); // Validate the Instagram icon image source
 
+                cy.get('.ant-typography')
+                    .should('have.text', 'Instagram'); // Validate the Instagram text
 
+                cy.get('button')
+                    .should('have.text', 'Connect'); // Validate the Connect button text
+            });
+
+        //Validate Facebook card
+        cy.get('.flex .flex-col .ant-card-body')
+            .eq(1)
+            .within(() => {
+                cy.get('img')
+                    .should('have.attr', 'src', '/src/assets/images/connectFb.svg'); // Validate the Facebook icon image source
+
+                cy.get('.ant-typography')
+                    .should('have.text', 'Facebook'); // Validate the Facebook text
+
+                cy.get('button')
+                    .should('have.text', 'Connect'); // Validate the Connect button text
+            });
+
+        // Validate Youtube card
+        cy.get('.flex .flex-col .ant-card-body') 
+            .eq(2)
+            .within(() => {
+                cy.get('img')
+                    .should('have.attr', 'src', '/src/assets/images/connectYoutube.svg'); // Validate the Youtube icon image source
+
+                cy.get('.ant-typography')
+                    .should('have.text', 'Youtube'); // Validate the Youtube text
+
+                cy.get('button')
+                    .should('have.text', 'Connect'); // Validate the Connect button text
+            });
 
 
     })

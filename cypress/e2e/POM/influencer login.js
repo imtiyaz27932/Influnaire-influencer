@@ -65,21 +65,21 @@ class login {
         cy.contains('Profile').click()
         cy.wait(2000)
 
-        cy.get('.ant-tabs-tab-active') 
+        cy.get('.ant-tabs-tab-active')
             .should('contain', 'Profile Overview'); // Validate that the tab contains the text 'Profile Overview'
 
         // Validate the profile information
         cy.get('.ant-avatar img')
             .should('have.attr', 'src', 'https://img.freepik.com/free-icon/user_318-159711.jpg'); // Validate the profile image URL
 
-        cy.get('.ant-typography') 
+        cy.get('.ant-typography')
             .should('contain', 'Leon Messi') // Validate the profile name
             .should('contain', 'Unknown'); // Validate the profile status (e.g., 'Unknown')
 
-        cy.get('.ant-tag') 
+        cy.get('.ant-tag')
             .should('contain', 'General'); // Validate the profile category
 
-        cy.get('.line-clamp-2 .ant-typography') 
+        cy.get('.line-clamp-2 .ant-typography')
             .should('contain', 'Your bio will be added here'); // Validate the profile bio
 
         // Perform assertions on social media links
@@ -92,11 +92,56 @@ class login {
         cy.get('#rc-tabs-1-tab-4')
             .should('contain', 'Twitter'); // Validate the Twitter tab
 
-        cy.get('#rc-tabs-1-tab-5') 
+        cy.get('#rc-tabs-1-tab-5')
             .should('contain', 'Youtube'); // Validate the YouTube tab
 
 
     }
+
+    // validatesocialmediaaccounts() {
+    //     // Validate Instagram card
+    //     cy.get('.flex .flex-col .ant-card-body') // Assuming this selects the Instagram card body
+    //         .eq(0)
+    //         .within(() => {
+    //             cy.get('img')
+    //                 .should('have.attr', 'src', '/src/assets/images/connectInsta.png'); // Validate the Instagram icon image source
+
+    //             cy.get('.ant-typography')
+    //                 .should('have.text', 'Instagram'); // Validate the Instagram text
+
+    //             cy.get('button')
+    //                 .should('have.text', 'Connect'); // Validate the Connect button text
+    //         });
+
+    //     // Validate Facebook card
+    //     cy.get('.flex .flex-col .ant-card-body') // Assuming this selects the Facebook card body
+    //         .eq(1)
+    //         .within(() => {
+    //             cy.get('img')
+    //                 .should('have.attr', 'src', '/src/assets/images/connectFb.svg'); // Validate the Facebook icon image source
+
+    //             cy.get('.ant-typography')
+    //                 .should('have.text', 'Facebook'); // Validate the Facebook text
+
+    //             cy.get('button')
+    //                 .should('have.text', 'Connect'); // Validate the Connect button text
+    //         });
+
+    //     // Validate Youtube card
+    //     cy.get('.flex .flex-col .ant-card-body') // Assuming this selects the Youtube card body
+    //         .eq(2)
+    //         .within(() => {
+    //             cy.get('img')
+    //                 .should('have.attr', 'src', '/src/assets/images/connectYoutube.svg'); // Validate the Youtube icon image source
+
+    //             cy.get('.ant-typography')
+    //                 .should('have.text', 'Youtube'); // Validate the Youtube text
+
+    //             cy.get('button')
+    //                 .should('have.text', 'Connect'); // Validate the Connect button text
+    //         });
+
+    // }
 
     invalidcredentials() {
         this.elements.loginEmailTextField().type('Test@gmail.com')
