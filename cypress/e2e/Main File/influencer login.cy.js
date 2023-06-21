@@ -15,7 +15,9 @@ describe('Influencer Login', () => {
         const name = new login()
         name.loginCredentials(repodata.Email, repodata.Password)
         name.verifystepsondashboard()
+        // name.profilestatuscard()
         // name.validatesocialmediaaccounts()
+
         cy.get('.flex .flex-col .ant-card-body')
             .eq(0)
             .within(() => {
@@ -44,7 +46,7 @@ describe('Influencer Login', () => {
             });
 
         // Validate Youtube card
-        cy.get('.flex .flex-col .ant-card-body') 
+        cy.get('.flex .flex-col .ant-card-body')
             .eq(2)
             .within(() => {
                 cy.get('img')
@@ -55,7 +57,9 @@ describe('Influencer Login', () => {
 
                 cy.get('button')
                     .should('have.text', 'Connect'); // Validate the Connect button text
+
             });
+        name.profilestatus()
 
 
     })

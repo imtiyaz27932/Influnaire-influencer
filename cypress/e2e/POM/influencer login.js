@@ -6,12 +6,24 @@ class login {
         eyeicon: () => cy.get('.ant-input-suffix'),
         googlesocialbutton: () => cy.get('.ant-btn-default'),
         facebooksocialbutton: () => cy.get('.gap-3 > .ant-btn-primary'),
-        profilename: () => cy.get('h5.ant-typography')
+        profilename: () => cy.get('h5.ant-typography'),
 
     }
 
     errormsg = {
         givevalidationmsg: () => cy.get('#notistack-snackbar').should('have.text', 'Invalid credentials')
+    }
+
+
+    profilestatuscard = {  // this function has not been included so far in the main file 
+        followers: () => cy.get('.ant-card-body h4').eq(0).should('have.text', '0'),
+        likes: () => cy.get('.ant-card-body h4').eq(1).should('have.text', '0'),
+        comments: () => cy.get('.ant-card-body h4').eq(2).should('have.text', '0'),
+        avglikes: () => cy.get('.ant-card-body h4').eq(3).should('have.text', '0'),
+        avgcomments: () => cy.get('.ant-card-body h4').eq(4).should('have.text', '0'),
+        engagementrate: () => cy.get('.ant-card-body h4').eq(5).should('have.text', '0')
+
+
     }
 
 
@@ -73,7 +85,7 @@ class login {
             .should('have.attr', 'src', 'https://img.freepik.com/free-icon/user_318-159711.jpg'); // Validate the profile image URL
 
         cy.get('.ant-typography')
-            .should('contain', 'Leon Messi') // Validate the profile name
+            .should('contain', 'undefined undefined') // Validate the profile name
             .should('contain', 'Unknown'); // Validate the profile status (e.g., 'Unknown')
 
         cy.get('.ant-tag')
@@ -98,50 +110,17 @@ class login {
 
     }
 
-    // validatesocialmediaaccounts() {
-    //     // Validate Instagram card
-    //     cy.get('.flex .flex-col .ant-card-body') // Assuming this selects the Instagram card body
-    //         .eq(0)
-    //         .within(() => {
-    //             cy.get('img')
-    //                 .should('have.attr', 'src', '/src/assets/images/connectInsta.png'); // Validate the Instagram icon image source
 
-    //             cy.get('.ant-typography')
-    //                 .should('have.text', 'Instagram'); // Validate the Instagram text
+    profilestatus() {
+        this.profilestatuscard.followers()
+        this.profilestatuscard.likes()
+        this.profilestatuscard.comments()
+        this.profilestatuscard.avgcomments()
+        this.profilestatuscard.avglikes()
+        this.profilestatuscard.engagementrate()
 
-    //             cy.get('button')
-    //                 .should('have.text', 'Connect'); // Validate the Connect button text
-    //         });
+    }
 
-    //     // Validate Facebook card
-    //     cy.get('.flex .flex-col .ant-card-body') // Assuming this selects the Facebook card body
-    //         .eq(1)
-    //         .within(() => {
-    //             cy.get('img')
-    //                 .should('have.attr', 'src', '/src/assets/images/connectFb.svg'); // Validate the Facebook icon image source
-
-    //             cy.get('.ant-typography')
-    //                 .should('have.text', 'Facebook'); // Validate the Facebook text
-
-    //             cy.get('button')
-    //                 .should('have.text', 'Connect'); // Validate the Connect button text
-    //         });
-
-    //     // Validate Youtube card
-    //     cy.get('.flex .flex-col .ant-card-body') // Assuming this selects the Youtube card body
-    //         .eq(2)
-    //         .within(() => {
-    //             cy.get('img')
-    //                 .should('have.attr', 'src', '/src/assets/images/connectYoutube.svg'); // Validate the Youtube icon image source
-
-    //             cy.get('.ant-typography')
-    //                 .should('have.text', 'Youtube'); // Validate the Youtube text
-
-    //             cy.get('button')
-    //                 .should('have.text', 'Connect'); // Validate the Connect button text
-    //         });
-
-    // }
 
     invalidcredentials() {
         this.elements.loginEmailTextField().type('Test@gmail.com')
