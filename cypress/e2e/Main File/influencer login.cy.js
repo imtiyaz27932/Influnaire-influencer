@@ -14,6 +14,10 @@ describe('Influencer Login', () => {
     it.only('influencer wants to login', () => {
         const name = new login()
         name.loginCredentials(repodata.Email, repodata.Password)
+        name.verifystepsondashboard()
+
+
+
 
     })
 

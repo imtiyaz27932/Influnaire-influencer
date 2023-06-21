@@ -6,7 +6,8 @@ class login {
         eyeicon: () => cy.get('.ant-input-suffix'),
         googlesocialbutton: () => cy.get('.ant-btn-default'),
         facebooksocialbutton: () => cy.get('.gap-3 > .ant-btn-primary'),
-       
+        profilename: () => cy.get('h5.ant-typography')
+
     }
 
     errormsg = {
@@ -20,12 +21,80 @@ class login {
         errormsgnull: () => cy.get('.ant-form-item-explain-error').should('have.text', 'Required field')
     }
 
-    loginCredentials(email, psd) {
+    loginCredentials(email, psd,) {
         this.elements.loginEmailTextField().type(email);
         this.elements.loginPasswordTextField().type(psd);
         this.elements.loginBtn().click();
         cy.wait(6000)
         cy.url().should('be.eq', 'https://app.influnaire.dreamkashmir.com/influencer/dashboard')
+        cy.wait(3000)
+
+        //cy.get('.ant-layout-content').scrollTo('bottom', { ensureScrollable: false })
+
+        //this.elements.profilename().should('have.text',profile)
+
+    }
+
+    verifystepsondashboard() {
+        cy.get('ul.ant-timeline')
+            .contains('Step 1')
+            .should('exist');
+
+        cy.get('ul.ant-timeline')
+            .contains('Verify your mobile number')
+            .should('exist');
+
+        cy.get('ul.ant-timeline')
+            .contains('Verify your email')
+            .should('exist');
+
+        cy.get('ul.ant-timeline')
+            .contains('Connect a social media profile')
+            .should('exist');
+
+        cy.get('ul.ant-timeline')
+            .contains('Get 10k Followers')
+            .should('exist');
+
+        cy.get('ul.ant-timeline')
+            .contains('1k of 10k')
+            .should('exist');
+        cy.wait(2000)
+
+
+        cy.contains('Profile').click()
+        cy.wait(2000)
+
+        cy.get('.ant-tabs-tab-active') 
+            .should('contain', 'Profile Overview'); // Validate that the tab contains the text 'Profile Overview'
+
+        // Validate the profile information
+        cy.get('.ant-avatar img')
+            .should('have.attr', 'src', 'https://img.freepik.com/free-icon/user_318-159711.jpg'); // Validate the profile image URL
+
+        cy.get('.ant-typography') 
+            .should('contain', 'Leon Messi') // Validate the profile name
+            .should('contain', 'Unknown'); // Validate the profile status (e.g., 'Unknown')
+
+        cy.get('.ant-tag') 
+            .should('contain', 'General'); // Validate the profile category
+
+        cy.get('.line-clamp-2 .ant-typography') 
+            .should('contain', 'Your bio will be added here'); // Validate the profile bio
+
+        // Perform assertions on social media links
+        cy.get('#rc-tabs-1-tab-2')
+            .should('contain', 'Instagram'); // Validate the Instagram tab
+
+        cy.get('#rc-tabs-1-tab-3')
+            .should('contain', 'Facebook'); // Validate the Facebook tab
+
+        cy.get('#rc-tabs-1-tab-4')
+            .should('contain', 'Twitter'); // Validate the Twitter tab
+
+        cy.get('#rc-tabs-1-tab-5') 
+            .should('contain', 'Youtube'); // Validate the YouTube tab
+
 
     }
 
@@ -64,7 +133,7 @@ class login {
     }
 
 
-    }
+}
 
 
 

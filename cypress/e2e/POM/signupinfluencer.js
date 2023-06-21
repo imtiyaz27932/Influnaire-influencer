@@ -81,11 +81,13 @@ class signup {
         this.elements.otp6().type('2')
         this.elements.verifyemailbtn().click()
         cy.wait(3000)
-        this.elements.instagramconnect().first().click()
+        this.elements.instagramconnect().eq(0).click()
         cy.wait(5000)
         cy.window('@windowOpen').then((newWindow) => {
-            cy.get('input[name="email"]').type('your-email@example.com');
-            cy.get('input[name="pass"]').type('your-password');
+            const newWindowDocument = newWindow.document;
+            cy.wait(3000)
+            cy.get('#email').type('your-email@example.com');
+            cy.get('#pass').type('your-password');
           });
           
        // this.elements.nxtbtnclick().click()

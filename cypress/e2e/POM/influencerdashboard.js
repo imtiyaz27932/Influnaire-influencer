@@ -58,10 +58,11 @@ class Dashboard {
 
     DarkTheme() {
         this.elements.Settings().click()
+        cy.wait(3000)
         cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(245, 245, 245)')
         this.elements.activatetheme().click()
         cy.wait(3000)
-        cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(245, 245, 245)')
+        cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(0, 0, 0)')
         this.elements.activatetheme().click()
         cy.wait(3000)
         cy.get('.ant-layout-content').should('have.css', 'background-color', 'rgb(245, 245, 245)')

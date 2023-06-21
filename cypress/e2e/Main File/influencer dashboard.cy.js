@@ -40,28 +40,34 @@ describe('Influencer Login', () => {
 
     })
 
-    it('verify that user is able to switch dark theme', () => {
+    it.only('verify that user is able to switch dark theme', () => {
         const dash = new login()
         const test = new Dashboard()
         dash.loginCredentials(repodata.Email, repodata.Password)
+        cy.wait(3000)
         test.DarkTheme()
+        cy.wait(2000)
 
     })
 
 
-    it.only('verify that user is able to Deactivate account', () => {
+    it('verify that user is able to Deactivate account', () => {
         const dash = new login()
         const test = new Dashboard()
         dash.loginCredentials(repodata.Email, repodata.Password)
+        cy.wait(2000)
         test.Deactivateaccount()
+        cy.wait(2000)
 
     })
 
-    it.only('verify that user is able to activate account', () => {
+    it('verify that user is able to activate account', () => {
         const dash = new login()
         const test= new Dashboard()
         dash.loginCredentials(repodata.Email, repodata.Password)
+        cy.wait(2000)
         test.reactivateaccount()
+        cy.wait(2000)
         })
 
 
