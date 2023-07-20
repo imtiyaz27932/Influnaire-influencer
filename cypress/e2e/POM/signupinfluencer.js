@@ -25,7 +25,7 @@ class signup {
         nxtbtnclick: () => cy.get('.ant-btn-primary'),
        // textarea: () => cy.get('.ant-input'),
         //influencerhandle: () => cy.get('.ant-select-selection-search-input'),
-        completeprofilebtn: () => cy.get('.ant-btn'),
+        ///completeprofilebtn: () => cy.get('.ant-btn'),
         signupwithgooglebutton: () => cy.contains('Signup with google'),
         signupwithfbtn: () => cy.contains('Signup with facebook'),
         signupasinfluencertxt: () => cy.contains('Signup as influencer'),
@@ -81,14 +81,15 @@ class signup {
         this.elements.otp6().type('2')
         this.elements.verifyemailbtn().click()
         cy.wait(3000)
-        this.elements.instagramconnect().eq(0).click()
-        cy.wait(5000)
-        cy.window('@windowOpen').then((newWindow) => {
-            const newWindowDocument = newWindow.document;
-            cy.wait(3000)
-            cy.get('#email').type('your-email@example.com');
-            cy.get('#pass').type('your-password');
-          });
+        cy.contains('Connect Later').click()
+        // this.elements.instagramconnect().eq(0).click()
+        // cy.wait(5000)
+        // cy.window('@windowOpen').then((newWindow) => {
+        //     const newWindowDocument = newWindow.document;
+        //     cy.wait(3000)
+        //     cy.get('#email').type('your-email@example.com');
+        //     cy.get('#pass').type('your-password');
+        //   });
           
        // this.elements.nxtbtnclick().click()
        // this.elements.textarea().type('Hey! this is Leon Messi')
@@ -99,7 +100,7 @@ class signup {
         // cy.get('.ant-select-item-option-content').click()
         //cy.pause()
         //this.elements.influencerhandle().select('Demo').click()
-        // this.elements.completeprofilebtn().click()
+         //this.elements.completeprofilebtn().click()
     }
 
     checkvisiblefields() {

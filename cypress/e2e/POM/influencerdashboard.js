@@ -25,10 +25,20 @@ class Dashboard {
         reactivatebtn: () => cy.get('.ant-btn'),
         continuetoacnt: () => cy.get('.ant-btn'),
         logoutbtn: () => cy.get('#logout'),
+        editprofile: () => cy.get('a[href="/influencer/profile/edit"]'),
+        profilefname: () => cy.get('#firstname'),
+        profilelname: () => cy.get('#lastname'),
+        profilebio: () => cy.get('#bio'),
+        saveprofilebtn: () => cy.get('.ant-btn')
 
 
 
 
+    }
+
+
+    errormessage = {
+        showvalidationmessage: () => cy.get('#notistack-snackbar').should('have.text', 'Profile updated successfully')
     }
 
     Dashboardfiels() {
@@ -84,6 +94,24 @@ class Dashboard {
         cy.wait(5000)
 
 
+    }
+
+    editprofileinfluencer(fname, lname, Bio) {
+        this.elements.Profile().click()
+        cy.wait(3000)
+        this.elements.editprofile().click()
+        cy.wait(2000)
+        this.elements.profilefname().clear().type(fname)
+        this.elements.profilelname().clear().type(lname)
+        this.elements.profilebio().clear().type(Bio)
+
+        // cy.get('.ant-upload ant-upload-select').selectFile("cypress/fixtures/cute.png");
+        // cy.pause()
+
+        cy.get('.ant-select-selection-item').type('{enter}');
+        this.elements.saveprofilebtn().click()
+        this.errormessage.showvalidationmessage()
+        cy.reload();
     }
 
 }

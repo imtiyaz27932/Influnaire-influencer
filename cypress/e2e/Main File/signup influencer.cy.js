@@ -29,6 +29,8 @@ describe('Influencer Signup Now Process', () => {
 
   })
 
+
+
   it('verify that if the user leaves all the fields of Signup as influencer empty and click on next>setPassword', () => {
     cy.contains('Signup Now').click()
     const inf = new signup()

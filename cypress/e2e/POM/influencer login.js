@@ -21,7 +21,7 @@ class login {
         comments: () => cy.get('.ant-card-body h4').eq(2).should('have.text', '0'),
         avglikes: () => cy.get('.ant-card-body h4').eq(3).should('have.text', '0'),
         avgcomments: () => cy.get('.ant-card-body h4').eq(4).should('have.text', '0'),
-        engagementrate: () => cy.get('.ant-card-body h4').eq(5).should('have.text', '0')
+        engagementrate: () => cy.get('.ant-card-body h4').eq(5).should('have.text', '0%')
 
 
     }
@@ -85,9 +85,10 @@ class login {
             .should('have.attr', 'src', 'https://img.freepik.com/free-icon/user_318-159711.jpg'); // Validate the profile image URL
 
         cy.get('.ant-typography')
-            .should('contain', 'undefined undefined') // Validate the profile name
+        
+            .should('contain', 'Leon Messi') // Validate the profile name
             .should('contain', 'Unknown'); // Validate the profile status (e.g., 'Unknown')
-
+        
         cy.get('.ant-tag')
             .should('contain', 'General'); // Validate the profile category
 

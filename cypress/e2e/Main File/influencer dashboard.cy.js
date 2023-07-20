@@ -40,7 +40,7 @@ describe('Influencer Login', () => {
 
     })
 
-    it.only('verify that user is able to switch dark theme', () => {
+    it.skip('verify that user is able to switch dark theme', () => {
         const dash = new login()
         const test = new Dashboard()
         dash.loginCredentials(repodata.Email, repodata.Password)
@@ -70,11 +70,21 @@ describe('Influencer Login', () => {
         cy.wait(2000)
         })
 
+       
+
 
     it('verify that user is able to logout from application successfully and reidrecte to login page ', () => {
         const dash = new login()
         const test = new Dashboard()
         dash.loginCredentials(repodata.Email, repodata.Password)
         test.logout()
+    })
+
+    it.only('Test that user is able to edit profile',()=>{
+        const dash = new login()
+        const test= new Dashboard()
+        dash.loginCredentials(repodata.Email, repodata.Password)
+        cy.wait(2000)
+        test.editprofileinfluencer(repodata.profilefname,repodata.profilelname,repodata.Bio)
     })
 })

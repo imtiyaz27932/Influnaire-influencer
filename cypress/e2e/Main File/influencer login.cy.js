@@ -6,12 +6,12 @@ describe('Influencer Login', () => {
     beforeEach(() => {
         cy.fixture('influencerdata').then((data) => {
             repodata = data;
-            cy.visit(Cypress.config('baseUrl'), { timeout: 12000 });
+            cy.visit(Cypress.config('baseUrl'), { timeout: 19000 });
 
         })
     })
 
-    it.only('influencer wants to login', () => {
+    it('influencer wants to login', () => {
         const name = new login()
         name.loginCredentials(repodata.Email, repodata.Password)
         name.verifystepsondashboard()

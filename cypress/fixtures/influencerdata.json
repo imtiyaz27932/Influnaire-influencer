@@ -1,9 +1,15 @@
 {
   "Firstname": "Leon",
   "Lastname": "Messi",
-  "Email": "volleys@gmail.com",
+  "Email": "onboardprocedss1@gmail.com",
   "Phonenumber": "9906411027",
   "Password": "String@123",
-  "ConfirmPassword": "String@123"
+  "ConfirmPassword": "String@123",
+
+
+  "profilefname": "Mohammad",
+  "profilelname": "Kamran",
+  "Bio": "Hey the profile has been updated"
+
   
 }
